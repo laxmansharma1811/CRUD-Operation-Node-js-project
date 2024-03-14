@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update User</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      width: 80%; 
+      max-width: 400px; 
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+
+    @media (max-width: 768px) {
+      form {
+        width: 90%; 
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <form action="/update/<%= user.id %>" method="post">
+    <h1>Update User</h1>
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="<%= user.name %>" required>
+    <br>
+    <label for="address">Address:</label>
+    <input type="text" name="address" value="<%= user.address %>" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="text" name="email" value="<%= user.email %>" required>
+    <br>
+    <label for="phone">Phone:</label>
+    <input type="text" name="phone" value="<%= user.phone %>" required>
+    <br>
+    <label for="profession">Profession:</label>
+    <input type="text" name="profession" value="<%= user.profession %>" required>
+    <br>
+    <button type="submit">Update User</button>
+    <br>
+    <a href="/">Back to User List</a>
+  </form>
+  
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+      text-align: center; 
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+   
+    a[href="/logout"] {
+      display: block;
+      margin: 20px auto; 
+    }
+
+    a[href^="/user"] {
+      background-color: green;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    a[href^="/update"] {
+      background-color: blue;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    a[href^="/delete"] {
+      background-color: red;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <% if (user) { %>
+      <h1>Welcome <%= user %></h1>
+
+      <h2>User List</h2>
+      <ul>
+        <% users.forEach(user => { %>
+          <li>
+            <%= user.name %>
+            <a href="/user/<%= user.id %>">View</a>
+            <a href="/update/<%= user.id %>">Update</a>
+            <a href="/delete/<%= user.id %>">Delete</a>
+          </li>
+        <% }); %>
+      </ul>
+
+      <h2>Create New User</h2>
+      <form action="/create" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <label for="address">Address:</label>
+        <input type="text" name="address" required>
+        <label for="email">Email:</label>
+        <input type="text" name="email" required>
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" required>
+        <label for="profession">Profession:</label>
+        <input type="text" name="profession" required>
+        <button type="submit">Create User</button>
+      </form>
+
+      <a href="/logout">Logout</a>
+    <% } else { %>
+      <p>You are not logged in. <a href="/login">Login</a></p>
+    <% } %>
+  </div>
+</body>
+
+</html>
